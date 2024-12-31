@@ -1,5 +1,12 @@
 .DS_Store
 venv/
+
+#Ignore vendor files 
+src/staticfiles/vendors
+#Ignore local-cdn files 
+local-cdn/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

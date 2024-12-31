@@ -1,17 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-
-    <title>{% block head_title %}SaaS{% endblock head_title %}</title>
-
-</head>
-<body>
-
-    {% block content %}
-replace me
-
-    {% endblock content %}
-
-</body>
-
+    <head>
+        <title>{% block head_title %}SaaS{% endblock head_title %}</title>
+        {% include 'base/css.html' %}
+    </head>
+    <body>
+        <div class="navbar-custom">{% include 'nav/navbar.html' %}</div>
+        {% block content %} replace me {% endblock content %} {% include
+        'base/js.html' %}
+    </body>
 </html>
