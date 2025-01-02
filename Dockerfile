@@ -49,9 +49,10 @@ ARG DATABASE_URL
 ENV DATABASE_URL={DATABASE_URL}
 
 ARG DEBUG_FLAG=0 
-ENV DENUG_FLAG={DEBUG_FLAG}
+ENV DEBUG_FLAG={DEBUG_FLAG}
 
-# database isn't available during build
+ARG CON_MAX_AGE=30
+ENV CON_MAX_AGE={CON_MAX_AGE}
 # run any other commands that do not need the database
 # such as:
 
