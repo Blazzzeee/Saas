@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # my-apps
     "visits",
-    "commando"
+    "commando",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -88,7 +89,7 @@ DATABASES = {
     }
 }
 
-DATABASE_URL = config("DATABASE_URL", default = None)
+DATABASE_URL = config("DATABASE_URL", default=None)
 
 if DATABASE_URL is not None:
     import dj_database_url
@@ -148,6 +149,14 @@ STATICFILES_DIRS = [STATICFILES_BASE_DIR]
 # output for manage.py collectstatic
 
 STATIC_ROOT = BASE_DIR.parent / "local-cdn"
+
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
