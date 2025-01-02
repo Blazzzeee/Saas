@@ -42,6 +42,14 @@ COPY ./src /code
 
 # Install the Python project requirements
 RUN pip install -r /tmp/requirements.txt
+ARG SECRET_KEY 
+ENV SECRET_KEY={SECRET_KEY}
+
+ARG DATABASE_URL 
+ENV DATABASE_URL={DATABASE_URL}
+
+ARG DEBUG_FLAG=0 
+ENV DENUG_FLAG={DEBUG_FLAG}
 
 # database isn't available during build
 # run any other commands that do not need the database
