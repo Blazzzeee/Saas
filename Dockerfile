@@ -48,7 +48,7 @@ ENV SECRET_KEY={SECRET_KEY}
 ARG DATABASE_URL 
 ENV DATABASE_URL={DATABASE_URL}
 
-ARG DEBUG_FLAG=0 
+ARG DEBUG_FLAG=True 
 ENV DEBUG_FLAG={DEBUG_FLAG}
 
 ARG CON_MAX_AGE=30
@@ -58,6 +58,9 @@ ENV CON_MAX_AGE={CON_MAX_AGE}
 
 RUN python manage.py vendor_pull
 RUN python manage.py collectstatic --noinput
+
+#whitenoise - s3 to serve staticfiles 
+
 
 # set the Django default project name
 ARG PROJ_NAME="cfehome"
