@@ -42,17 +42,18 @@ COPY ./src /code
 
 # Install the Python project requirements
 RUN pip install -r /tmp/requirements.txt
-ARG SECRET_KEY 
-ENV SECRET_KEY={SECRET_KEY}
 
-ARG DATABASE_URL 
-ENV DATABASE_URL={DATABASE_URL}
+ARG SECRET_KEY
+ENV SECRET_KEY=$SECRET_KEY
 
-ARG DEBUG_FLAG=True 
-ENV DEBUG_FLAG={DEBUG_FLAG}
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
+ARG DEBUG_FLAG=True
+ENV DEBUG_FLAG=$DEBUG_FLAG
 
 ARG CON_MAX_AGE=30
-ENV CON_MAX_AGE={CON_MAX_AGE}
+ENV CON_MAX_AGE=$CON_MAX_AGE
 # run any other commands that do not need the database
 # such as:
 
